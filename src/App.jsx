@@ -39,18 +39,17 @@ function App() {
     
     setIsLoading(true);
     
-    // Add user message immediately
     const userMessage = {
       type: 'user',
       content: message.trim()
     };
     
     setMessages(prev => [...prev, userMessage]);
-    setInputMessage(""); // Clear input
+    setInputMessage("");
     
     try {
       const response = await axios({
-        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCMPvCbfCP5N2Xp3VXmr5-owFCfAiwmUaM",
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
         method: "post",
         data: {
           contents: [
